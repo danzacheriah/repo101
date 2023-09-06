@@ -1,8 +1,10 @@
-// app.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use PORT environment variable if available
+
+// Load environment variables from .env file
+require('dotenv').config();
 
 // In-memory data store (for demonstration)
 let items = [];
@@ -40,3 +42,4 @@ app.delete('/items/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
